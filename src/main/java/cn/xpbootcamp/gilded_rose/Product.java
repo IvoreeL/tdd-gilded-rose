@@ -31,30 +31,30 @@ public class Product {
     }
 
     public void updateProduct(){
-        updateQuality();
-        updateSellIn();
+        updateQuality(DEFAULT_QUALITY_VARIATION);
+        updateSellIn(DEFAULT_UPDATE_PERIOD);
     }
 
-    private void updateSellIn() {
-        if (this.sellIn - DEFAULT_UPDATE_PERIOD < 0) {
+    public void updateSellIn(int update_period) {
+        if (this.sellIn - update_period < 0) {
             this.sellIn = 0;
         }else{
-            this.sellIn -= DEFAULT_UPDATE_PERIOD;
+            this.sellIn -= update_period;
         }
     }
 
-    private void updateQuality() {
+    public void updateQuality(int quality_variation) {
         if (this.sellIn != 0) {
-            if (this.quality - DEFAULT_QUALITY_VARIATION < 0) {
+            if (this.quality - quality_variation < 0) {
                 this.quality = 0;
             }else{
-                this.quality -= DEFAULT_QUALITY_VARIATION;
+                this.quality -= quality_variation;
             }
         }else{
-            if (this.quality - DEFAULT_QUALITY_VARIATION * 2 < 0) {
+            if (this.quality - quality_variation * 2 < 0) {
                 this.quality = 0;
             }else{
-                this.quality -= DEFAULT_QUALITY_VARIATION * 2;
+                this.quality -= quality_variation * 2;
             }
         }
     }
