@@ -5,10 +5,19 @@ import cn.xpbootcamp.gilded_rose.Exceptions.SellInValueException;
 
 public class ProductManufacturer {
 
-    public static Product createProduct(int sellIn, int quality) throws QualityValueException, SellInValueException {
+    public static Product createProduct(ProductType productType, int sellIn, int quality) throws QualityValueException, SellInValueException {
         validateSellIn(sellIn);
         validateQuality(quality);
-        return new Product(sellIn, quality);
+        switch (productType){
+            case AGED_BRIE:
+                return new AgedBrie(sellIn, quality);
+            default:
+                return new Product(sellIn, quality);
+        }
+    }
+
+    public static Product createProduct(int sellIn, int quality) throws QualityValueException, SellInValueException {
+        return createProduct(ProductType.COMMON, sellIn, quality);
     }
 
     private static void validateQuality(int quality) throws QualityValueException {

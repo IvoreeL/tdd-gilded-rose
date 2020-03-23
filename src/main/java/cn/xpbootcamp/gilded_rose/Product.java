@@ -6,10 +6,16 @@ public class Product {
     private static final int DEFAULT_QUALITY_VARIATION = 1;
     private int sellIn;
     private int quality;
+    private ProductType productType;
 
-    public Product(Integer sellIn, Integer quality) {
+    public Product(int sellIn, int quality, ProductType productType) {
         this.sellIn = sellIn;
         this.quality = quality;
+        this.productType = productType;
+    }
+
+    public Product(int sellIn, int quality) {
+        this(sellIn, quality, ProductType.COMMON);
     }
 
     public int getSellIn() {
@@ -18,6 +24,10 @@ public class Product {
 
     public int getQuality() {
         return quality;
+    }
+
+    public ProductType getProductType() {
+        return productType;
     }
 
     public void updateProduct(){
