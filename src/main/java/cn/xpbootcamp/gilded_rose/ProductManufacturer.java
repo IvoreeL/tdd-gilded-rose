@@ -10,11 +10,11 @@ public class ProductManufacturer {
         validateQuality(quality);
         switch (productType){
             case AGED_BRIE:
-                return new AgedBrie(sellIn, quality);
+                return createAgedBrie(sellIn, quality);
             case SULFURAS:
-                return new Sulfuras(quality);
+                return createSulfuras(quality);
             default:
-                return new Product(sellIn, quality);
+                return createCommonProduct(sellIn, quality);
         }
     }
 
@@ -22,9 +22,21 @@ public class ProductManufacturer {
         return createProduct(ProductType.COMMON, sellIn, quality);
     }
 
-    public static Product createProduct(ProductType productType, int quality) throws QualityValueException, SellInValueException {
+    public static Product createProduct(int quality) throws QualityValueException, SellInValueException {
         final int DEFAULT_SULFURAS_SELL_IN = 0;
-        return createProduct(productType, DEFAULT_SULFURAS_SELL_IN, quality);
+        return createProduct(ProductType.SULFURAS, DEFAULT_SULFURAS_SELL_IN, quality);
+    }
+
+    public static Product createCommonProduct(int sellIn, int quality) {
+        return new Product(sellIn, quality, ProductType.COMMON);
+    }
+
+    public static Product createAgedBrie(int sellIn, int quality)  {
+        return new AgedBrie(sellIn, quality);
+    }
+
+    public static Product createSulfuras(int quality) {
+        return new Sulfuras(quality);
     }
 
     private static void validateQuality(int quality) throws QualityValueException {

@@ -10,14 +10,14 @@ class SulfurasTest {
 
     @Test
     void shouldCreateSulfurasSuccessfully() throws QualityValueException, SellInValueException {
-        Product sulfuras = ProductManufacturer.createProduct(ProductType.SULFURAS, 1);
+        Product sulfuras = ProductManufacturer.createProduct(1);
         assertEquals(sulfuras.getProductType().name(), "SULFURAS");
         assertEquals(sulfuras.getQuality(), 1);
     }
 
     @Test
     void shouldKeepQualityAndSellInUnchanged() throws QualityValueException, SellInValueException {
-        Product sulfuras = ProductManufacturer.createProduct(ProductType.SULFURAS, 1);
+        Product sulfuras = ProductManufacturer.createProduct(1);
         sulfuras.updateProduct();
         sulfuras.updateProduct();
         assertEquals(sulfuras.getQuality(), 1);
