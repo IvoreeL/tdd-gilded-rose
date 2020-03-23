@@ -42,8 +42,26 @@ class ProductTest {
     @Test
     void shouldUpdateQualityAndSellInWithDefaultValueSuccessfully() throws QualityValueException, SellInValueException {
         Product product = ProductManufacturer.createProduct(2, 3);
-        ProductManufacturer.updateQuality(product);
+        product.updateProduct();
         assertEquals(product.getQuality(), 2);
         assertEquals(product.getSellIn(), 1);
+    }
+
+    @Test
+    void shouldUpdateQualityAndSellInCorrectly() throws QualityValueException, SellInValueException {
+        Product product = ProductManufacturer.createProduct(1, 1);
+        product.updateProduct();
+        product.updateProduct();
+        assertEquals(product.getSellIn(), 0);
+        assertEquals(product.getQuality(), 0);
+    }
+
+    @Test
+    void shouldUpdateQualityTwoTimesFasterWhenSellInPeriodIsOver() throws QualityValueException, SellInValueException {
+        Product product = ProductManufacturer.createProduct(1, 5);
+        product.updateProduct();
+        product.updateProduct();
+        assertEquals(product.getSellIn(), 0);
+        assertEquals(product.getQuality(), 2);
     }
 }
