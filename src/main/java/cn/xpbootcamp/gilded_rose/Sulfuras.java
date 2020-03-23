@@ -9,6 +9,5 @@ public class Sulfuras extends Product {
     }
 
     @Override
-    public void updateProduct() {
-    }
+    public void updateProduct() {}
 }
