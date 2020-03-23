@@ -11,6 +11,8 @@ public class ProductManufacturer {
         switch (productType){
             case AGED_BRIE:
                 return new AgedBrie(sellIn, quality);
+            case SULFURAS:
+                return new Sulfuras(sellIn, quality);
             default:
                 return new Product(sellIn, quality);
         }
