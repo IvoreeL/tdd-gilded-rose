@@ -12,7 +12,7 @@ public class ProductManufacturer {
             case AGED_BRIE:
                 return new AgedBrie(sellIn, quality);
             case SULFURAS:
-                return new Sulfuras(sellIn, quality);
+                return new Sulfuras(quality);
             default:
                 return new Product(sellIn, quality);
         }
@@ -20,6 +20,11 @@ public class ProductManufacturer {
 
     public static Product createProduct(int sellIn, int quality) throws QualityValueException, SellInValueException {
         return createProduct(ProductType.COMMON, sellIn, quality);
+    }
+
+    public static Product createProduct(ProductType productType, int quality) throws QualityValueException, SellInValueException {
+        final int DEFAULT_SULFURAS_SELL_IN = 0;
+        return createProduct(productType, DEFAULT_SULFURAS_SELL_IN, quality);
     }
 
     private static void validateQuality(int quality) throws QualityValueException {
