@@ -47,7 +47,9 @@ public class Product {
         if (this.sellIn != 0) {
             if (this.quality - quality_variation < 0) {
                 this.quality = 0;
-            }else{
+            }else if (this.quality - quality_variation > 50) {
+                this.quality = 50;
+            } else{
                 this.quality -= quality_variation;
             }
         }else{
