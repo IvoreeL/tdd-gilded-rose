@@ -23,4 +23,19 @@ class BackstagePassTest {
         assertEquals(backstagePass.getSellIn(), 29);
         assertEquals(backstagePass.getQuality(), 11);
     }
+
+    @Test
+    void qualityCannotBeLargerThan50EvenForBackstagePass() throws QualityValueException, SellInValueException {
+        Product backstagePass = ProductManufacturer.createProduct(ProductType.BACKSTAGE_PASS, 30, 50);
+        backstagePass.updateProduct();
+        assertEquals(backstagePass.getQuality(), 50);
+    }
+
+    @Test
+    void shouldIncreaseQualityWith2PtsBefore10days() throws QualityValueException, SellInValueException {
+        Product backstagePass = ProductManufacturer.createProduct(ProductType.BACKSTAGE_PASS, 11, 10);
+        backstagePass.updateProduct();
+        backstagePass.updateProduct();
+        assertEquals(backstagePass.getQuality(), 13);
+    }
 }
