@@ -13,6 +13,8 @@ public class ProductManufacturer {
                 return createAgedBrie(sellIn, quality);
             case SULFURAS:
                 return createSulfuras(quality);
+            case BACKSTAGE_PASS:
+                return createBackstagePass(sellIn, quality);
             default:
                 return createCommonProduct(sellIn, quality);
         }
@@ -27,16 +29,20 @@ public class ProductManufacturer {
         return createProduct(ProductType.SULFURAS, DEFAULT_SULFURAS_SELL_IN, quality);
     }
 
-    public static Product createCommonProduct(int sellIn, int quality) {
+    private static Product createCommonProduct(int sellIn, int quality) {
         return new Product(sellIn, quality, ProductType.COMMON);
     }
 
-    public static Product createAgedBrie(int sellIn, int quality)  {
+    private static Product createAgedBrie(int sellIn, int quality)  {
         return new AgedBrie(sellIn, quality);
     }
 
-    public static Product createSulfuras(int quality) {
+    private static Product createSulfuras(int quality) {
         return new Sulfuras(quality);
+    }
+
+    private static Product createBackstagePass(int sellIn, int quality) {
+        return new BackstagePass(sellIn, quality);
     }
 
     private static void validateQuality(int quality) throws QualityValueException {
