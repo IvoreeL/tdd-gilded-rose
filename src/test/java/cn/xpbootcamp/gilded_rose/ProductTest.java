@@ -2,6 +2,7 @@ package cn.xpbootcamp.gilded_rose;
 
 
 import cn.xpbootcamp.gilded_rose.Exceptions.QualityValueException;
+import cn.xpbootcamp.gilded_rose.Exceptions.SellInValueException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,4 +30,13 @@ class ProductTest {
             ProductManufacturer.createProduct(10, HIGH_QUALITY);
         });
     }
+
+    @Test
+    void failToCreateProductWhenSellInIsInvalid() {
+        final int NEGATIVE_SELLIN = -1;
+        assertThrows(SellInValueException.class, () -> {
+            ProductManufacturer.createProduct(NEGATIVE_SELLIN, 10);
+        });
+    }
+
 }
