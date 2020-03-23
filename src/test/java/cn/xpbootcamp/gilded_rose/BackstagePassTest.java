@@ -15,4 +15,12 @@ class BackstagePassTest {
         assertEquals(backstagePass.getSellIn(), 1);
         assertEquals(backstagePass.getQuality(), 10);
     }
+
+    @Test
+    void shouldIncreaseQualityWithDefaultValueWhenCloserToShowCase() throws QualityValueException, SellInValueException {
+        Product backstagePass = ProductManufacturer.createProduct(ProductType.BACKSTAGE_PASS, 30, 10);
+        backstagePass.updateProduct();
+        assertEquals(backstagePass.getSellIn(), 29);
+        assertEquals(backstagePass.getQuality(), 11);
+    }
 }
