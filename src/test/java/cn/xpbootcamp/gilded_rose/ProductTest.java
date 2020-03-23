@@ -39,4 +39,11 @@ class ProductTest {
         });
     }
 
+    @Test
+    void shouldUpdateQualityAndSellInWithDefaultValueSuccessfully() throws QualityValueException, SellInValueException {
+        Product product = ProductManufacturer.createProduct(2, 3);
+        ProductManufacturer.updateQuality(product);
+        assertEquals(product.getQuality(), 2);
+        assertEquals(product.getSellIn(), 1);
+    }
 }

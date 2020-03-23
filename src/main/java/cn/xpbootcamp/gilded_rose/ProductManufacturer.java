@@ -5,6 +5,10 @@ import cn.xpbootcamp.gilded_rose.Exceptions.SellInValueException;
 
 public class ProductManufacturer {
 
+    private static final int DEFAULT_UPDATE_PERIOD = 1;
+    private static final int DEFAULT_QUALITY_VARIATION = 1;
+
+
     public static Product createProduct(int sellIn, int quality) throws QualityValueException, SellInValueException {
         validateSellIn(sellIn);
         validateQuality(quality);
@@ -21,5 +25,10 @@ public class ProductManufacturer {
         if (sellIn < 0) {
             throw new SellInValueException("Sell-in value is negative.");
         }
+    }
+
+    public static void updateQuality(Product product) {
+        product.setSellIn(product.getSellIn()-DEFAULT_UPDATE_PERIOD);
+        product.setQuality(product.getQuality() - DEFAULT_QUALITY_VARIATION);
     }
 }
